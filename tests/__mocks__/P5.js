@@ -1,10 +1,10 @@
 const MockVector = (x, y) => ({
   x,
-  y,
+  y
 });
 
 const MockP5 = {
-  createVector: jest.fn((x, y) => MockVector(x, y)),
+  createVector: jest.fn((x, y) => MockVector(x, y))
 };
 
 export default MockP5;

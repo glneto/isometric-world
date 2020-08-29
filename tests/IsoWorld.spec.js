@@ -7,7 +7,12 @@ describe("IsoWorld", () => {
       const squareHeight = 50;
       const squareWidth = 50;
       const world = {};
-      const matrix = generateCubeMatrix(world, squares, squareHeight, squareWidth);
+      const matrix = generateCubeMatrix(
+        world,
+        squares,
+        squareHeight,
+        squareWidth
+      );
 
       const halfHeight = squareHeight / 2;
       const halfWidth = squareWidth / 2;
@@ -26,13 +31,19 @@ describe("IsoWorld", () => {
 
       // Third row
       expect(matrix.getCube(2, 0).position.x).toBe(-halfWidth - halfWidth);
-      expect(matrix.getCube(2, 0).position.y).toBe(topCoordinate + halfHeight + halfHeight);
+      expect(matrix.getCube(2, 0).position.y).toBe(
+        topCoordinate + halfHeight + halfHeight
+      );
 
       expect(matrix.getCube(0, 2).position.x).toBe(halfWidth + halfWidth);
-      expect(matrix.getCube(0, 2).position.y).toBe(topCoordinate + halfHeight + halfHeight);
+      expect(matrix.getCube(0, 2).position.y).toBe(
+        topCoordinate + halfHeight + halfHeight
+      );
 
       expect(matrix.getCube(1, 1).position.x).toBe(0);
-      expect(matrix.getCube(1, 1).position.y).toBe(topCoordinate + halfHeight + halfHeight);
+      expect(matrix.getCube(1, 1).position.y).toBe(
+        topCoordinate + halfHeight + halfHeight
+      );
     });
 
     test("correctly generates bottom matrix lines", () => {
@@ -40,7 +51,12 @@ describe("IsoWorld", () => {
       const squares = 5;
       const squareHeight = 50;
       const squareWidth = 50;
-      const matrix = generateCubeMatrix(worldPosition, squares, squareHeight, squareWidth);
+      const matrix = generateCubeMatrix(
+        worldPosition,
+        squares,
+        squareHeight,
+        squareWidth
+      );
 
       expect(matrix.getCube(2, 2).position.x).toBe(0);
       expect(matrix.getCube(2, 2).position.y).toBe(0);

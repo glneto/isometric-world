@@ -1,12 +1,18 @@
 const path = require("path");
 
 module.exports = {
-  mode: "production",
-  entry: "./src/index.js",
+  mode: "development",
+  entry: {
+    world: "./tests/integration/world/src/index.ts"
+  },
   devtool: "source-map",
+  target: "web",
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index.ts"
+    path: path.resolve(__dirname, "dist")
+  },
+  devServer: {
+    contentBase: __dirname,
+    port: 8081
   },
   resolve: {
     extensions: [".ts", ".js"]

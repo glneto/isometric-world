@@ -31,13 +31,14 @@ class IsoWorld {
     this.squareLength = squares;
     this.position = _P5.createVector(x, y);
     this.startPosition = _P5.createVector(x, y);
-    this.cubes = generateCubeMatrix(this, squares, squareHeight, squareWidth);
     this.goldenRatio = squareWidth / squareHeight;
     this.squareHeight = squareHeight;
     this.squareWidth = squareWidth;
 
     this.underlayers = new Map();
     this.overlayers = new Map();
+
+    this.cubes = generateCubeMatrix(this, squares, squareHeight, squareWidth);
   }
 
   move(x: number, y: number): void {
@@ -126,6 +127,7 @@ export const generateCubeMatrix = (
           width: squareWidth
         })
       );
+
       currentX += squareWidth;
     }
   }

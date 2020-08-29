@@ -11,18 +11,18 @@ module.exports = {
     library: "IsometricWorld",
     libraryTarget: "umd",
     globalObject: "this",
-    umdNamedDefine: true,
+    umdNamedDefine: true
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js"]
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: "ts-loader",
-        exclude: /node_modules/,
-      },
-    ],
-  },
+        exclude: /node_modules|tests/
+      }
+    ]
+  }
 };
