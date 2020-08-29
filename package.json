@@ -1,0 +1,27 @@
+{
+  "name": "isometric-world",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "jest"
+  },
+  "types": "./dist/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.11.0",
+    "@babel/preset-env": "7.11.0",
+    "@babel/preset-typescript": "7.10.4",
+    "@types/p5": "0.9.1",
+    "babel-jest": "26.2.2",
+    "jest": "26.2.2",
+    "ts-loader": "8.0.2",
+    "typescript": "3.9.7",
+    "webpack": "^4.44.1"
+  }
+}
