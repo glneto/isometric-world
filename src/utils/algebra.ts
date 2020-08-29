@@ -5,7 +5,7 @@ const SarrusDeterminant = (
   y2: number,
   x: number,
   y: number
-) => {
+): number => {
   /**
    * line equation to get the line created by (x1,y1) / (x2, y2)
    * | x1 y1 1 | x1 y1

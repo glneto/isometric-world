@@ -39,23 +39,26 @@ class IsoCube extends IsoObject {
   // Dynamic props
   baseColor: number[] = [255, 255, 255];
   strokeColor: number[] = [0, 0, 0];
-  strokeWeight: number = 2;
+  strokeWeight = 2;
 
-  constructor(world: IsoWorld, { x, y, height, width, depth, onMouseOver }: IsoCubeOpts) {
+  constructor(
+    world: IsoWorld,
+    { x, y, height, width, depth, onMouseOver }: IsoCubeOpts
+  ) {
     super(world);
-    
+
     this.position = _P5.createVector(x, y);
     this.height = height;
     this.width = width;
     this.depth = depth || 50;
-    this.onMouseOver = onMouseOver; 
+    this.onMouseOver = onMouseOver;
   }
 
-  setBaseColor(color: number[]) {
+  setBaseColor(color: number[]): void {
     this.baseColor = color;
   }
 
-  setStrokeWeight(value: number) {
+  setStrokeWeight(value: number): void {
     this.strokeWeight = value;
   }
 
@@ -77,20 +80,35 @@ class IsoCube extends IsoObject {
     });
   }
 
-  setTopAndBaseQuad(worldPosition: Vector) {
+  setTopAndBaseQuad(worldPosition: Vector): void {
     const { x, y } = this.position;
 
     this.topQuad = {
-      top: _P5.createVector(worldPosition.x + x, worldPosition.y + y - this.height / 2),
-      bottom: _P5.createVector(worldPosition.x + x, worldPosition.y + y + this.height / 2),
-      left: _P5.createVector(worldPosition.x + x - this.width / 2, worldPosition.y + y),
-      right: _P5.createVector(worldPosition.x + x + this.width / 2, worldPosition.y + y),
+      top: _P5.createVector(
+        worldPosition.x + x,
+        worldPosition.y + y - this.height / 2
+      ),
+      bottom: _P5.createVector(
+        worldPosition.x + x,
+        worldPosition.y + y + this.height / 2
+      ),
+      left: _P5.createVector(
+        worldPosition.x + x - this.width / 2,
+        worldPosition.y + y
+      ),
+      right: _P5.createVector(
+        worldPosition.x + x + this.width / 2,
+        worldPosition.y + y
+      ),
     };
 
-    this.baseQuad = QuadUtils.cloneAndMoveQuad(this.topQuad, _P5.createVector(0, this.depth));
+    this.baseQuad = QuadUtils.cloneAndMoveQuad(
+      this.topQuad,
+      _P5.createVector(0, this.depth)
+    );
   }
 
-  reposition(worldPosition: Vector) {
+  reposition(worldPosition: Vector): void {
     this.setTopAndBaseQuad(worldPosition);
   }
 
@@ -98,7 +116,7 @@ class IsoCube extends IsoObject {
     return this.topQuad;
   }
 
-  draw(position: Vector) {
+  draw(position: Vector): void {
     super.draw(position);
 
     _P5.strokeWeight(this.strokeWeight);

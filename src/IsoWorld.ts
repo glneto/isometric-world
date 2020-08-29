@@ -21,11 +21,17 @@ class IsoWorld {
   private overlayers: Map<number, IsoLayer>;
   private cubes: IsoCubeMap;
 
-  constructor(x: number, y: number, squares: number, squareHeight: number, squareWidth: number) {
+  constructor(
+    x: number,
+    y: number,
+    squares: number,
+    squareHeight: number,
+    squareWidth: number
+  ) {
     this.squareLength = squares;
     this.position = _P5.createVector(x, y);
     this.startPosition = _P5.createVector(x, y);
-    this.cubes = generateCubeMatrix(this.position, squares, squareHeight, squareWidth);
+    this.cubes = generateCubeMatrix(this, squares, squareHeight, squareWidth);
     this.goldenRatio = squareWidth / squareHeight;
     this.squareHeight = squareHeight;
     this.squareWidth = squareWidth;
@@ -34,10 +40,10 @@ class IsoWorld {
     this.overlayers = new Map();
   }
 
-  move(x: number, y: number) {
+  move(x: number, y: number): void {
     this.position.set(x, y);
     this.cubes = generateCubeMatrix(
-      this.position,
+      this,
       this.squareLength,
       this.squareHeight,
       this.squareWidth
@@ -60,12 +66,12 @@ class IsoWorld {
     return this.getCube(0, this.squareLength - 1);
   }
 
-  setLayer(position: number, layer: IsoLayer) {
+  setLayer(position: number, layer: IsoLayer): void {
     if (position < 0) this.underlayers.set(position, layer);
     else this.overlayers.set(position, layer);
   }
 
-  draw() {
+  draw(): void {
     this.underlayers.forEach((layer) => {
       layer.draw(this.position);
     });
@@ -113,7 +119,12 @@ export const generateCubeMatrix = (
       matrix.setCube(
         row - column,
         column,
-        new IsoCube(world, { x: currentX, y: currentY, height: squareHeight, width: squareWidth })
+        new IsoCube(world, {
+          x: currentX,
+          y: currentY,
+          height: squareHeight,
+          width: squareWidth,
+        })
       );
       currentX += squareWidth;
     }
@@ -130,7 +141,12 @@ export const generateCubeMatrix = (
       matrix.setCube(
         squares - column,
         column + (squares - totalColumnsLength) - 1,
-        new IsoCube(world, { x: currentX, y: currentY, height: squareHeight, width: squareWidth })
+        new IsoCube(world, {
+          x: currentX,
+          y: currentY,
+          height: squareHeight,
+          width: squareWidth,
+        })
       );
       currentX += squareWidth;
     }

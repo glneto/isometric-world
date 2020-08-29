@@ -1,11 +1,11 @@
 import IsoCube from "./IsoCube";
 
-class IsoCubeMap extends Map {
+class IsoCubeMap extends Map<string, IsoCube> {
   constructor() {
     super();
   }
 
-  setCube(x: number, y: number, cube: IsoCube) {
+  setCube(x: number, y: number, cube: IsoCube): Map<string, IsoCube> {
     return super.set(`x${x}y${y}`, cube);
   }
 

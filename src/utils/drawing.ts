@@ -1,7 +1,7 @@
 import Quad from "../interfaces/Quad";
 import { _P5 } from "../IsoP5";
 
-const quad = (value: Quad) => {
+const quad = (value: Quad): void => {
   _P5.quad(
     value.left.x,
     value.left.y,

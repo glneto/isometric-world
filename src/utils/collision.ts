@@ -2,7 +2,7 @@ import Algebra from "./algebra";
 import Quad from "../interfaces/Quad";
 import { Vector } from "p5";
 
-const isPointCollidingQuad = (px: number, py: number, quad: Quad) => {
+const isPointCollidingQuad = (px: number, py: number, quad: Quad): boolean => {
   px = Math.floor(px);
   py = Math.floor(py);
 
@@ -31,21 +31,34 @@ const isPointCollidingQuad = (px: number, py: number, quad: Quad) => {
   // Check if the point is above/below the limiting lines.
   if (px >= minX && px <= maxX && py >= minY && py <= maxY) {
     return (
-      topDeterminant >= 0 && bottomDeterminant <= 0 && leftDeterminant >= 0 && rightDeterminant <= 0
+      topDeterminant >= 0 &&
+      bottomDeterminant <= 0 &&
+      leftDeterminant >= 0 &&
+      rightDeterminant <= 0
     );
   }
 
   return false;
 };
 
-const isQuadCollidingQuad = (quad1: Quad, quad2: Quad) => {
-  return [quad1.bottom, quad1.left, quad1.right, quad1.top].some((vertice: Vector) =>
+const isQuadCollidingQuad = (quad1: Quad, quad2: Quad): boolean => {
+  return [
+    quad1.bottom,
+    quad1.left,
+    quad1.right,
+    quad1.top,
+  ].some((vertice: Vector) =>
     isPointCollidingQuad(vertice.x, vertice.y, quad2)
   );
 };
 
-const isQuadContainingQuad = (quad1: Quad, quad2: Quad) => {
-  return [quad1.bottom, quad1.left, quad1.right, quad1.top].every((vertice: Vector) =>
+const isQuadContainingQuad = (quad1: Quad, quad2: Quad): boolean => {
+  return [
+    quad1.bottom,
+    quad1.left,
+    quad1.right,
+    quad1.top,
+  ].every((vertice: Vector) =>
     isPointCollidingQuad(vertice.x, vertice.y, quad2)
   );
 };

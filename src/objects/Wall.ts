@@ -9,7 +9,7 @@ import Drawing from "../utils/drawing";
 import Collision from "../utils/collision";
 
 class Wall extends IsoObject {
-  TYPE: string = "WALL";
+  TYPE = "WALL";
 
   readonly world: IsoWorld;
   readonly left: Vector;
@@ -25,8 +25,14 @@ class Wall extends IsoObject {
 
   sideQuad: Quad;
 
-  constructor(world: IsoWorld, left: Vector, right: Vector, height: number, thickness?: number) {
-    super();
+  constructor(
+    world: IsoWorld,
+    left: Vector,
+    right: Vector,
+    height: number,
+    thickness?: number
+  ) {
+    super(world);
 
     this.left = left;
     this.right = right;
@@ -42,7 +48,8 @@ class Wall extends IsoObject {
 
     // ie.: -5 if wall is on the right side, so the opposite block is on the left of it,
     // otherwise 5 if wall is on the left side of the screen, so the opposite block should be on the right side of it
-    const oppositeBlockXDifference = this.thickness * this.world.goldenRatio * directionX;
+    const oppositeBlockXDifference =
+      this.thickness * this.world.goldenRatio * directionX;
 
     // ie.: 5 * 1.5 * -1 if wall is on the bottom part of the screen, so the opposite block should be above it (-y)
     // otherwise 5 * 1.5 * 1 if wall is on the top part of the screen, so the opposite block should be below it.
@@ -78,8 +85,12 @@ class Wall extends IsoObject {
 
   private setRightQuad(position: Vector) {
     this.rightQuad = {
-      left: _P5.createVector(this.left.x, this.left.y - this.height).add(position),
-      top: _P5.createVector(this.right.x, this.right.y - this.height).add(position),
+      left: _P5
+        .createVector(this.left.x, this.left.y - this.height)
+        .add(position),
+      top: _P5
+        .createVector(this.right.x, this.right.y - this.height)
+        .add(position),
       right: _P5.createVector(this.right.x, this.right.y).add(position),
       bottom: _P5.createVector(this.left.x, this.left.y).add(position),
     };
@@ -112,11 +123,11 @@ class Wall extends IsoObject {
     };
   }
 
-  getCollisionBlock() {
+  getCollisionBlock(): Quad {
     return this.baseQuad;
   }
 
-  reposition(position: Vector) {
+  reposition(position: Vector): void {
     this.setLeftQuad(position);
     this.setRightQuad(position);
     this.setBaseQuad();
@@ -124,15 +135,15 @@ class Wall extends IsoObject {
     this.setSideQuad();
   }
 
-  setOpacityColor(value: number) {
+  setOpacityColor(value: number): void {
     this.setFillColor([...this.fillColor, value]);
   }
 
-  isQuadBehindWall(quad: Quad) {
+  isQuadBehindWall(quad: Quad): boolean {
     return Collision.isQuadCollidingQuad(quad, this.leftQuad);
   }
 
-  draw(basePosition: Vector) {
+  draw(basePosition: Vector): void {
     super.draw(basePosition);
 
     this.setStrokeColor(this.strokeColor);

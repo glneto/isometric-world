@@ -8,7 +8,7 @@ class IsoLayer {
     this.objects = objects;
   }
 
-  draw(position: Vector) {
+  draw(position: Vector): void {
     this.objects.forEach((obj) => {
       obj.draw(position);
     });

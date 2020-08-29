@@ -35,7 +35,7 @@ abstract class IsoObject implements IsoObjectInterface {
     return this;
   }
 
-  draw(position: Vector) {
+  draw(position: Vector): void {
     this.reposition(position);
   }
 }

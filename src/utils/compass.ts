@@ -2,7 +2,7 @@ import COMPASS from "../enum/compass";
 import { Vector } from "p5";
 import CompassDirection from "../enum/compass";
 
-const getDirection = (p1: Vector, p2: Vector) => {
+const getDirection = (p1: Vector, p2: Vector): COMPASS => {
   let direction = COMPASS.NORTH;
 
   // Check X axis
@@ -32,16 +32,16 @@ const getDirection = (p1: Vector, p2: Vector) => {
   return direction;
 };
 
-const isSouthDirection = (direction: CompassDirection) =>
+const isSouthDirection = (direction: CompassDirection): boolean =>
   [COMPASS.SOUTH, COMPASS.SOUTHEAST, COMPASS.SOUTHWEST].includes(direction);
 
-const isNorthDirection = (direction: CompassDirection) =>
+const isNorthDirection = (direction: CompassDirection): boolean =>
   [COMPASS.NORTH, COMPASS.NORTHEAST, COMPASS.NORTHWEST].includes(direction);
 
-const isWestDirection = (direction: CompassDirection) =>
+const isWestDirection = (direction: CompassDirection): boolean =>
   [COMPASS.WEST, COMPASS.NORTHWEST, COMPASS.SOUTHWEST].includes(direction);
 
-const isEastDirection = (direction: CompassDirection) =>
+const isEastDirection = (direction: CompassDirection): boolean =>
   [COMPASS.EAST, COMPASS.NORTHEAST, COMPASS.SOUTHEAST].includes(direction);
 
 const Compass = {
