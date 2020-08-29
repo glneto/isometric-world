@@ -5,7 +5,7 @@ export { setP5 } from "./IsoP5";
 
 import Wall from "./objects/Wall";
 export const GenericObjects = {
-  Wall,
+  Wall
 };
 
 export { default as IsoWorld } from "./IsoWorld";

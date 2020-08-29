@@ -123,7 +123,7 @@ export const generateCubeMatrix = (
           x: currentX,
           y: currentY,
           height: squareHeight,
-          width: squareWidth,
+          width: squareWidth
         })
       );
       currentX += squareWidth;
@@ -145,7 +145,7 @@ export const generateCubeMatrix = (
           x: currentX,
           y: currentY,
           height: squareHeight,
-          width: squareWidth,
+          width: squareWidth
         })
       );
       currentX += squareWidth;

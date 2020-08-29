@@ -6,7 +6,7 @@ enum CompassDirection {
   NORTHWEST = "NW",
   NORTHEAST = "NE",
   SOUTHWEST = "SW",
-  SOUTHEAST = "SE",
+  SOUTHEAST = "SE"
 }
 
 export default CompassDirection;

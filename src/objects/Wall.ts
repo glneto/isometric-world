@@ -79,7 +79,7 @@ class Wall extends IsoObject {
           this.left.x - oppositeBlockXDifference,
           this.left.y - oppositeBlockYDifference
         )
-        .add(position),
+        .add(position)
     };
   }
 
@@ -92,7 +92,7 @@ class Wall extends IsoObject {
         .createVector(this.right.x, this.right.y - this.height)
         .add(position),
       right: _P5.createVector(this.right.x, this.right.y).add(position),
-      bottom: _P5.createVector(this.left.x, this.left.y).add(position),
+      bottom: _P5.createVector(this.left.x, this.left.y).add(position)
     };
   }
 
@@ -101,7 +101,7 @@ class Wall extends IsoObject {
       left: this.rightQuad.left,
       top: this.leftQuad.left,
       right: this.leftQuad.bottom,
-      bottom: this.rightQuad.bottom,
+      bottom: this.rightQuad.bottom
     };
   }
 
@@ -110,7 +110,7 @@ class Wall extends IsoObject {
       left: this.leftQuad.left,
       top: this.leftQuad.top,
       right: this.rightQuad.top,
-      bottom: this.rightQuad.left,
+      bottom: this.rightQuad.left
     };
   }
 
@@ -119,7 +119,7 @@ class Wall extends IsoObject {
       left: this.leftQuad.left,
       top: this.rightQuad.left,
       right: this.rightQuad.bottom,
-      bottom: this.leftQuad.bottom,
+      bottom: this.leftQuad.bottom
     };
   }
 

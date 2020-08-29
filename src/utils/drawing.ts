@@ -15,7 +15,7 @@ const quad = (value: Quad): void => {
 };
 
 const Drawing = {
-  quad,
+  quad
 };
 
 export default Drawing;

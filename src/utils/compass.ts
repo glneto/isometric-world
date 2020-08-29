@@ -49,7 +49,7 @@ const Compass = {
   isSouthDirection,
   isNorthDirection,
   isWestDirection,
-  isEastDirection,
+  isEastDirection
 };
 
 export default Compass;

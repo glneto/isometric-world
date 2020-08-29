@@ -18,7 +18,7 @@ const SarrusDeterminant = (
 };
 
 const Algebra = {
-  SarrusDeterminant,
+  SarrusDeterminant
 };
 
 export default Algebra;

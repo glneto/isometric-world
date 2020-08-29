@@ -46,7 +46,7 @@ const isQuadCollidingQuad = (quad1: Quad, quad2: Quad): boolean => {
     quad1.bottom,
     quad1.left,
     quad1.right,
-    quad1.top,
+    quad1.top
   ].some((vertice: Vector) =>
     isPointCollidingQuad(vertice.x, vertice.y, quad2)
   );
@@ -57,7 +57,7 @@ const isQuadContainingQuad = (quad1: Quad, quad2: Quad): boolean => {
     quad1.bottom,
     quad1.left,
     quad1.right,
-    quad1.top,
+    quad1.top
   ].every((vertice: Vector) =>
     isPointCollidingQuad(vertice.x, vertice.y, quad2)
   );
@@ -66,7 +66,7 @@ const isQuadContainingQuad = (quad1: Quad, quad2: Quad): boolean => {
 const Collision = {
   isPointCollidingQuad,
   isQuadCollidingQuad,
-  isQuadContainingQuad,
+  isQuadContainingQuad
 };
 
 export default Collision;

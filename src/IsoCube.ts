@@ -68,7 +68,7 @@ class IsoCube extends IsoObject {
       left: this.topQuad.left,
       top: this.topQuad.bottom,
       right: this.baseQuad.bottom,
-      bottom: this.baseQuad.left,
+      bottom: this.baseQuad.left
     });
 
     // Right side
@@ -76,7 +76,7 @@ class IsoCube extends IsoObject {
       left: this.topQuad.bottom,
       top: this.topQuad.right,
       right: this.baseQuad.right,
-      bottom: this.baseQuad.bottom,
+      bottom: this.baseQuad.bottom
     });
   }
 
@@ -99,7 +99,7 @@ class IsoCube extends IsoObject {
       right: _P5.createVector(
         worldPosition.x + x + this.width / 2,
         worldPosition.y + y
-      ),
+      )
     };
 
     this.baseQuad = QuadUtils.cloneAndMoveQuad(

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "lint": "esw \"./src/**/*.ts\" -w"
+    "lint": "esw \"./src/**/*.ts\" -w",
+    "format": "prettier \"./src/**/*.ts\" --write --ignore-unknown"
   },
   "types": "./dist/src/index.d.ts",
   "files": [
