@@ -9,10 +9,7 @@ describe("render an isometric world correctly", () => {
 
   test("renders correctly", async () => {
     const page = await browser.newPage();
-    await page.goto("https://localhost:8080");
-
-    await removeBanners(page);
-
+    await page.goto("http://localhost:8081/world");
     const image = await page.screenshot();
 
     expect(image).toMatchImageSnapshot();

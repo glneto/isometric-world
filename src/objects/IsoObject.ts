@@ -3,13 +3,11 @@ import { _P5 } from "../IsoP5";
 import Quad from "../interfaces/Quad";
 import IsoWorld from "../IsoWorld";
 
-interface IsoObjectInterface {
-  reposition(position: Vector): void;
-  getCollisionBlock(): Quad;
+export interface IIsoObject {
   draw(position: Vector): void;
 }
 
-abstract class IsoObject implements IsoObjectInterface {
+abstract class IsoObject implements IIsoObject {
   protected strokeColor: number[];
   protected fillColor: number[];
   protected world: IsoWorld;

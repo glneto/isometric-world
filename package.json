@@ -5,11 +5,12 @@
   "main": "./dist/index.js",
   "scripts": {
     "build": "webpack",
-    "test": "jest",
+    "test": "jest \"./tests/",
     "lint": "esw \"./src/**/*.ts\" -w",
     "format": "prettier \"./(src|tests)/**/*\" --write --ignore-unknown",
     "build-integration": "webpack --config \"./tests/integration/webpack.integration.js\"",
-    "integration-test": "concurrently \"npm run build-integration -- --watch\" \"webpack-dev-server\""
+    "integration-server": "concurrently \"npm run build-integration -- --watch\" \"webpack-dev-server --config \"./tests/integration/webpack.integration.js\" \"",
+    "integration-test": "jest --config \"./tests/integration/jest.config.js\""
   },
   "types": "./dist/src/index.d.ts",
   "files": [

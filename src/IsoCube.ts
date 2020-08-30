@@ -3,25 +3,22 @@ import Quad from "./interfaces/Quad";
 import Collision from "./utils/collision";
 import Drawing from "./utils/drawing";
 import { Vector } from "p5";
-import IsoObject from "./objects/IsoObject";
+import { IIsoObject } from "./objects/IsoObject";
 import QuadUtils from "./utils/quad";
-import IsoWorld from "./IsoWorld";
 
 interface IsoCubeEventFunc {
   (cube: IsoCube): void;
 }
 
 interface IsoCubeOpts {
-  x: number;
-  y: number;
-  height: number;
-  width: number;
+  position: Vector;
+  height?: number;
+  width?: number;
   depth?: number;
   onMouseOver?: IsoCubeEventFunc;
 }
 
-class IsoCube extends IsoObject {
-  // Readonly props
+class IsoCube implements IIsoObject {
   readonly height: number;
   readonly width: number;
 
@@ -29,11 +26,11 @@ class IsoCube extends IsoObject {
    * The cube height. (Distance between top quad and base quad)
    */
   readonly depth: number;
+
   private position: Vector;
   topQuad: Quad;
   baseQuad: Quad;
 
-  // Events
   onMouseOver: IsoCubeEventFunc;
 
   // Dynamic props
@@ -41,13 +38,8 @@ class IsoCube extends IsoObject {
   strokeColor: number[] = [0, 0, 0];
   strokeWeight = 2;
 
-  constructor(
-    world: IsoWorld,
-    { x, y, height, width, depth, onMouseOver }: IsoCubeOpts
-  ) {
-    super(world);
-
-    this.position = _P5.createVector(x, y);
+  constructor({ position, height, width, depth, onMouseOver }: IsoCubeOpts) {
+    this.position = position;
     this.height = height;
     this.width = width;
     this.depth = depth || 50;
@@ -80,25 +72,25 @@ class IsoCube extends IsoObject {
     });
   }
 
-  setTopAndBaseQuad(worldPosition: Vector): void {
+  setTopAndBaseQuad(basePosition: Vector): void {
     const { x, y } = this.position;
 
     this.topQuad = {
       top: _P5.createVector(
-        worldPosition.x + x,
-        worldPosition.y + y - this.height / 2
+        basePosition.x + x,
+        basePosition.y + y - this.height / 2
       ),
       bottom: _P5.createVector(
-        worldPosition.x + x,
-        worldPosition.y + y + this.height / 2
+        basePosition.x + x,
+        basePosition.y + y + this.height / 2
       ),
       left: _P5.createVector(
-        worldPosition.x + x - this.width / 2,
-        worldPosition.y + y
+        basePosition.x + x - this.width / 2,
+        basePosition.y + y
       ),
       right: _P5.createVector(
-        worldPosition.x + x + this.width / 2,
-        worldPosition.y + y
+        basePosition.x + x + this.width / 2,
+        basePosition.y + y
       )
     };
 
@@ -117,7 +109,7 @@ class IsoCube extends IsoObject {
   }
 
   draw(position: Vector): void {
-    super.draw(position);
+    this.reposition(position);
 
     _P5.strokeWeight(this.strokeWeight);
     _P5.rectMode(_P5.CENTER);

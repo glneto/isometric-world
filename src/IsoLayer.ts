@@ -1,11 +1,15 @@
-import IsoObject from "./objects/IsoObject";
+import { IIsoObject } from "./objects/IsoObject";
 import { Vector } from "p5";
 
 class IsoLayer {
-  readonly objects: IsoObject[];
+  readonly objects: IIsoObject[];
 
-  constructor(objects: IsoObject[]) {
+  constructor(objects: IIsoObject[]) {
     this.objects = objects;
+  }
+
+  addObject(obj: IIsoObject) {
+    this.objects.push(obj);
   }
 
   draw(position: Vector): void {
