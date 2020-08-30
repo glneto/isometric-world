@@ -17,15 +17,6 @@ class IsoWorld {
   currentPosition: Vector;
   startPosition: Vector;
 
-  height: number;
-  width: number;
-
-  /**
-   * Number of cubes that should be drawn in the center line.
-   * Cubes to the top and to the bottom of the center line will be
-   * automatically generated based in the center line size.
-   */
-  readonly centerAxisSize: number;
   private layers: IsoLayer[];
 
   constructor({ x, y }: IsoWorldConstructorParams) {

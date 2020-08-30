@@ -46,10 +46,12 @@ class IsoCubeMap implements IIsoObject {
   }
 
   private generateRows(): void {
-    const startY = -(this.rowsLength / 2) * this.props.cubeHeight; // Should start at the top so the next rows will overlay the previous ones.
+    const totalMapWidth = this.props.cubeWidth * this.columnsLength;
+    const startX = totalMapWidth / 2;
+    const startY = this.props.cubeHeight / 2;
 
     for (let row = 0; row < this.rowsLength; row++) {
-      const x = (row * this.props.cubeWidth) / 2;
+      const x = startX + (row * this.props.cubeWidth) / 2;
       const y = startY + (row * this.props.cubeHeight) / 2;
 
       const position = _P5.createVector(x, y);
